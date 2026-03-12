@@ -13,7 +13,13 @@
     <header class="header">
         <div class="header__top">
             <a class="header__logo" href="/">Todo</a>
+            <nav>
+                <a class="header__nav" href="/categories">
+                カテゴリ一覧
+                </a>
+            </nav>
         </div>
+
         <div class="header__bottom">
             @if(session('message'))
             <div class="header__bottom-green">{{ session('message')  }}</div>
@@ -29,25 +35,7 @@
     </header>
 
     <main>
-        <div class="content">
-            <div class="form__create">
-                <form action="/todos" method="post">
-                    @csrf
-                    <input class="form__create-input" type="text" name="content">
-                    <button class="form__create-button" type="submit">作成</button>
-                </form>
-            </div>
-            <table class="table">
-                <tr>
-                    <th class="table__title">Todo</th>
-                </tr>
-                @yield('content')
-            </table>
-            <div>
-
-            </div>
-        </div>
-
+        @yield('content')
     </main>
 </body>
 

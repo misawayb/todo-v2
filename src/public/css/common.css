@@ -3,14 +3,22 @@ body {
 }
 
 .header__top {
-    padding: 15px 10px;
+    padding: 15px 50px;
     background-color: black;
+    display: flex;
+    justify-content: space-between;
 }
 .header__logo {
     color: white;
     text-decoration: none;
     font-size: 32px;
     font-weight: bold;
+}
+
+.header__nav {
+    margin: auto 0;
+    color: white;
+    text-decoration: none;
 }
 
 .header__bottom {
