@@ -10,8 +10,12 @@
         <h2>新規作成</h2>
         <form action="/todos" method="post">
             @csrf
-            <input class="form__create-todo" type="text" name="create-todo">
-            <input class="form__create-category" type="text" name="create-category" placeholder="カテゴリ">
+            <input class="form__create-todo" type="text" name="content">
+            <select class="form__create-category" name="category_id">
+                @foreach($categories as $category)
+                <option value="{{ $category -> id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
             <button class="form__create-button" type="submit">作成</button>
         </form>
     </div>
@@ -19,8 +23,12 @@
         <h2>Todo検索</h2>
         <form action="/categories" method="post">
             @csrf
-            <input class="form__search-todo" type="text" name="search-todo">
-            <input class="form__search-category" type="search" name="search-category" placeholder="カテゴリ">
+            <input class="form__search-todo" type="text" name="content">
+            <select class="form__search-category" name="category_id">
+                @foreach($categories as $category)
+                <option value="{{ $category -> id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
             <button class="form__search-button" type="submit">検索</button>
         </form>
     </div>
@@ -35,7 +43,7 @@
                 <form action="/todos/{{ $todo -> id }}" method="post">
                     @csrf
                     @method('patch')
-                    <input class="list__todo" type="text" name="list__todo" value="{{ $todo -> content }}">
+                    <input class="list__todo" type="text" name="content" value="{{ $todo -> content }}">
                 </form>
             </td>
             <td>

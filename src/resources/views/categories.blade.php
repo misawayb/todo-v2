@@ -11,7 +11,7 @@
     <div class="form__create">
         <form action="/categories" method="post">
             @csrf
-            <input class="form__create-input" type="text" name="content">
+            <input class="form__create-input" type="text" name="name">
             <button class="form__create-button" type="submit">作成</button>
         </form>
     </div>
@@ -25,7 +25,7 @@
                 <form action="/categories/{{ $category -> id }}" method="post">
                     @csrf
                     @method('patch')
-                    <input class="table__row-content" type="text" name="content" value="{{ $category -> content }}">
+                    <input class="table__row-content" type="text" name="name" value="{{ $category -> name }}">
                     <button class="table__row-update" type="submit">更新</button>
                 </form>
             </td>

@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
+
+class CategoryController extends Controller
+{
+    public function  index()
+    {
+        $categories = Category::all();
+        return view ('categories',compact('categories'));
+    }
+
+    public function store(CategoryRequest $request)
+    {
+        $category = $request->only(['name']);
+        Category::create($category);
+        return redirect ('/categories')->with('message','カテゴリを追加しました');
+    }
+
+
+    public function update (CategoryRequest $request,Category $category)
+    {
+        $category -> update($request->only(['name']));
+        return redirect('/categories')->with('message','カテゴリ名を更新しました');
+    }
+
+
+    public function destroy(Category $category)
+    {
+        $category ->delete();
+        return redirect('/categories')->with('message','カテゴリを削除しました');
+    }
+}
