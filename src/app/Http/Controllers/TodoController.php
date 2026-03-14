@@ -91,8 +91,19 @@ class TodoController extends Controller
         return redirect('/')->with('message', 'Todoを削除しました');
     }
 
-    public function search()
+    public function search(Request $request)
     {
+        $query = Todo::query();
 
+        if ($request -> content) {
+            $query ->where('content','like','%'.$request -> content.'%');
+        }
+        if ($request -> category_id){
+            $query -> where ('category_id',$request ->category_id);
+        }
+
+        $todos = $query ->get();
+        $categories = Category::all();
+        return view('index',compact('todos','categories'));
     }
 }
