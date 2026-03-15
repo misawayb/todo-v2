@@ -1,36 +1,22 @@
 .content {
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
 }
 
-h2 {
-    margin: 20px 0 15px;
-}
-
-.form__create form,
-.form__search form {
+.form__create form {
+    margin: 50px 0;
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
 }
 
-.form__create-todo,
-.form__search-todo{
+.form__create-input {
     height: 2.5em;
-    width: 50%;
+    width: 70%;
     border: 1px solid rgb(218, 218, 218);
     border-radius: 3px;
 }
 
-.form__create-category,
-.form__search-category {
-    width: 20%;
-    border: 1px solid rgb(218, 218, 218);
-    border-radius: 3px;
-}
-
-.form__create-button,
-.form__search-button{
-    margin-left:  auto;
+.form__create-button {
     width: 20%;
     background-color: black;
     color: white;
@@ -39,7 +25,6 @@ h2 {
 }
 
 .table {
-    margin-top: 40px;
     border-collapse: collapse;
     width: 100%;
 }
@@ -49,39 +34,38 @@ h2 {
     border-bottom: 1px solid rgb(218, 218, 218);
 }
 
-.table th,
-.table td {
+.table__title {
     padding: 0 10px;
     text-align: left;
-}
-
-.table td {
-    font-size: 15px;
-}
-
-.table__title-todo,
-.table__title-category{
     font-size: 18px;
     font-weight: bold;
 }
 
-.table__row input {
+.table__row form {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.table__row-content {
     width: 100%;
     border: none;
+    padding: 0 10px;
 }
 
 .table__row-content:focus {
     outline: none;
 }
 
-table td:nth-of-type(n+3) {
-    width: 50px;
+table td:last-child {
+    width: 60px;
 }
 
 .table__row-update,
 .table__row-delete {
     width: 50px;
     height: 30px;
+    margin-left: 10px;
     border: none;
     color: white;
     border-radius: 3px;

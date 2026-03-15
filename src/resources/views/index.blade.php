@@ -12,6 +12,7 @@
             @csrf
             <input class="form__create-todo" type="text" name="content">
             <select class="form__create-category" name="category_id">
+                <option value="">カテゴリ</option>
                 @foreach($categories as $category)
                 <option value="{{ $category -> id }}">{{ $category->name }}</option>
                 @endforeach
@@ -19,12 +20,12 @@
             <button class="form__create-button" type="submit">作成</button>
         </form>
     </div>
-    <div class="form__category">
+    <div class="form__search">
         <h2>Todo検索</h2>
         <form action="/todos/search" method="get">
-            @csrf
             <input class="form__search-todo" type="text" name="content">
             <select class="form__search-category" name="category_id">
+                <option value="">カテゴリ</option>
                 @foreach($categories as $category)
                 <option value="{{ $category -> id }}">{{ $category->name }}</option>
                 @endforeach
@@ -32,6 +33,12 @@
             <button class="form__search-button" type="submit">検索</button>
         </form>
     </div>
+    @foreach($todos as $todo)
+    <form id="update-{{ $todo->id }}" action="/todos/{{ $todo -> id }}" method="post">
+        @csrf
+        @method('patch')
+    </form>
+    @endforeach
     <table class="table">
         <tr>
             <th class="table__title-todo">Todo</th>
@@ -39,10 +46,6 @@
         </tr>
         @foreach($todos as $todo)
         <tr class="table__row">
-            <form id="update-{{ $todo->id }}" action="/todos/{{ $todo -> id }}" method="post">
-                @csrf
-                @method('patch')
-            </form>
             <td>
                 <input class="list__todo" form="update-{{ $todo->id }}" type="text" name="content" value="{{ $todo -> content }}">
             </td>
